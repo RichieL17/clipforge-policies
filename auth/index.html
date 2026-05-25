@@ -1,10 +1,22 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
   <html>
-  <head><meta charset="utf-8"><title>ClipForge Auth</title></head>
+  <head><meta charset="utf-8"><title>ClipForge - TikTok Auth</title>
+  <style>
+    body{font-family:sans-serif;padding:40px;background:#111;color:#eee;text-align:center}
+    #code{font-size:15px;font-family:monospace;background:#222;padding:16px;border-radius:8px;word-break:break-all;margin:20px 0}
+    button{padding:12px 28px;background:#2a7d4f;color:white;border:none;border-radius:8px;cursor:pointer;font-size:16px}
+  </style>
+  </head>
   <body>
+  <h2>ClipForge - TikTok Connected!</h2>
+  <p>Copy the code below and paste it into ClipForge:</p>
+  <div id="code"></div>
+  <button onclick="copy()">Copy Code</button>
+  <p id="s" style="color:#4caf50"></p>
   <script>
-    window.location.replace('http://localhost:8080' + window.location.search);
+    const code = new URLSearchParams(window.location.search).get('code') || 'Error: no code';
+    document.getElementById('code').textContent = code;
+    function copy(){navigator.clipboard.writeText(code).then(()=>document.getElementById('s').textContent='Copied! Paste into ClipForge.');}
   </script>
-  <p>Redirecting to ClipForge...</p>
   </body>
   </html>
